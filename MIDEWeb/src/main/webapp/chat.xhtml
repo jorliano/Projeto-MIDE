@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<head jsf:id="head">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="jortec" />
+<meta name="author" content="jorliano" />
+<title>MonitoramentoWeb - por Jorliano</title>
+<link href="#{request.contextPath}/imagens/favicon.ico"
+	rel="shortcut icon" />
+<!-- Web Fonts -->
+
+<!-- Bootstrap -->
+<link href="#{request.contextPath}/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
+<!--fonte de icones externa -->
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+<link type="text/css" rel="stylesheet"
+	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700" />
+<link type="text/css" rel="stylesheet"
+	href="http://fonts.googleapis.com/css?family=Oswald:400,700,300" />
+<!-- Css -->
+<link type="text/css" rel="stylesheet"
+	href="#{request.contextPath}/css/chat.css" />
+<link type="text/css" rel="stylesheet"
+	href="#{request.contextPath}/css/main.css" />
+
+
+</head>
+<body>
+
+	<!-- BEGIN QUICK SIDEBAR TOGGLER -->
+	<button type="button" class="quick-sidebar-toggler"
+		data-toggle="collapse">
+		<span class="sr-only">Toggle Quick Sidebar</span> <i
+			class="fa fa-logout"></i>
+		<div class="quick-sidebar-notification">
+			<span class="badge badge-danger">7</span>
+		</div>
+	</button>
+	<!-- END QUICK SIDEBAR TOGGLER -->
+
+	<!-- BEGIN QUICK SIDEBAR -->
+	<a href="javascript:;" class="page-quick-sidebar-toggler"> <i
+		class="fa fa-login"></i>
+	</a>
+	<div class="page-quick-sidebar-wrapper"
+		data-close-on-body-click="false">
+		<div class="page-quick-sidebar">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="javascript:;"
+					data-target="#quick_sidebar_tab_1" data-toggle="tab"> Users <span
+						class="badge badge-danger">2</span>
+				</a></li>
+				<li><a href="javascript:;" data-target="#quick_sidebar_tab_2"
+					data-toggle="tab"> Alerts <span class="badge badge-success">7</span>
+				</a></li>
+				<li class="dropdown"><a href="javascript:;"
+					class="dropdown-toggle" data-toggle="dropdown"> More <i
+						class="fa fa-angle-down"></i>
+				</a>
+					<ul class="dropdown-menu pull-right">
+						<li><a href="javascript:;" data-target="#quick_sidebar_tab_3"
+							data-toggle="tab"> <i class="fa fa-bell"></i> Alerts
+						</a></li>
+						<li><a href="javascript:;" data-target="#quick_sidebar_tab_3"
+							data-toggle="tab"> <i class="fa fa-info"></i> Notifications
+						</a></li>
+						<li><a href="javascript:;" data-target="#quick_sidebar_tab_3"
+							data-toggle="tab"> <i class="fa fa-speech"></i> Activities
+						</a></li>
+						<li class="divider"></li>
+						<li><a href="javascript:;" data-target="#quick_sidebar_tab_3"
+							data-toggle="tab"> <i class="fa fa-settings"></i> Settings
+						</a></li>
+					</ul></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane active page-quick-sidebar-chat"
+					id="quick_sidebar_tab_1">
+					<div class="page-quick-sidebar-chat-users" data-rail-color="#ddd"
+						data-wrapper-class="page-quick-sidebar-list">
+						<h3 class="list-heading">Ativos</h3>
+						<ul class="media-list list-items users">
+							<li class="media todos">
+
+
+								<div class="media-body">
+									<h4 class="media-heading">Todos</h4>
+									<div class="media-heading-sub">Usuarios ativos</div>
+								</div>
+							</li>
+
+						</ul>
+
+					</div>
+					<div class="page-quick-sidebar-item">
+						<div class="page-quick-sidebar-chat-user">
+							<div class="page-quick-sidebar-nav">
+								<a href="javascript:;" class="page-quick-sidebar-back-to-list">
+									<i class="fa fa-arrow-left"></i>Back
+								</a>
+							</div>
+							<div class="page-quick-sidebar-chat-user-messages">
+								<div class="post out"> <img class="avatar" alt=""
+									src="../assets/layouts/layout/img/avatar3.jpg" />
+								<div class="message">
+									<span class="arrow"></span> <label class="name">Bob
+										Nilson</label> <span class="datetime">20:17</span> <span class="body">
+										Great! Thanks. Will check it right away. </span>
+								</div>
+							</div>
+							<div class="post in">
+								<i class="avatar fa fa-user fa-3x" alt="" />
+								<div class="message">
+									<span class="arrow"></span> <label class="name">Ella
+										Wong</label> <span class="datetime">20:40</span> <span class="body">
+										Please let me know if you have any comment. </span>
+								</div>
+							</div>
+						</div>
+						<div class="page-quick-sidebar-chat-user-form">
+							<div class="input-group">
+								<input type="text" class="form-control"
+									placeholder="Digite a mensage aqui..." />
+								<div class="input-group-btn">
+									<button type="button" class="btn green chat_mensage"
+										name="chat">
+										<i class="fa fa-send"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane page-quick-sidebar-alerts"
+				id="quick_sidebar_tab_2">
+				<div class="page-quick-sidebar-alerts-list">
+					<h3 class="list-heading">General</h3>
+					<ul class="feeds list-items">
+						<li>
+							<div class="col1">
+								<div class="cont">
+									<div class="cont-col1">
+										<div class="label label-sm label-info">
+											<i class="fa fa-check"></i>
+										</div>
+									</div>
+									<div class="cont-col2">
+										<div class="desc">
+											You have 4 pending tasks. <span
+												class="label label-sm label-warning "> Take action <i
+												class="fa fa-share"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col2">
+								<div class="date">Just now</div>
+							</div>
+						</li>
+						<li><a href="javascript:;">
+								<div class="col1">
+									<div class="cont">
+										<div class="cont-col1">
+											<div class="label label-sm label-success">
+												<i class="fa fa-bar-chart-o"></i>
+											</div>
+										</div>
+										<div class="cont-col2">
+											<div class="desc">Finance Report for year 2013 has been
+												released.</div>
+										</div>
+									</div>
+								</div>
+								<div class="col2">
+									<div class="date">20 mins</div>
+								</div>
+						</a></li>
+						<li><a href="javascript:;">
+								<div class="col1">
+									<div class="cont">
+										<div class="cont-col1">
+											<div class="label label-sm label-default">
+												<i class="fa fa-briefcase"></i>
+											</div>
+										</div>
+										<div class="cont-col2">
+											<div class="desc">IPO Report for year 2013 has been
+												released.</div>
+										</div>
+									</div>
+								</div>
+								<div class="col2">
+									<div class="date">20 mins</div>
+								</div>
+						</a></li>
+					</ul>
+					<h3 class="list-heading">System</h3>
+				</div>
+			</div>
+			<div class="tab-pane page-quick-sidebar-settings"
+				id="quick_sidebar_tab_3">
+				<div class="page-quick-sidebar-settings-list">
+					<h3 class="list-heading">General Settings</h3>
+					<ul class="list-items borderless">
+
+						<li>Enable SMS Alerts <!--input type="checkbox" class="make-switch" checked data-size="small" data-on-color="success" data-on-text="ON" data-off-color="default" data-off-text="OFF"/-->
+						</li>
+					</ul>
+					<h3 class="list-heading">System Settings</h3>
+					<ul class="list-items borderless">
+
+						<li>Failed Email Attempts <input
+							class="form-control input-inline input-sm input-small" value="5" />
+						</li>
+						<li>Secondary SMTP Port <input
+							class="form-control input-inline input-sm input-small"
+							value="3560" />
+						</li>
+						<li>Notify On System Error</li>
+
+					</ul>
+					<div class="inner-content">
+						<button class="btn btn-success">
+							<i class="fa fa-settings"></i> Save Changes
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<!-- END QUICK SIDEBAR -->
+
+</body>
+<!-- jQuery -->
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script type="text/javascript"
+	src="#{request.contextPath}/js/bootstrap.min.js"></script>
+<script src="#{request.contextPath}/js/init_chat.js"></script>
+<script src="#{request.contextPath}/js/chat.js"></script>
+<script src="#{request.contextPath}/js/scrol_chat.js"></script>
+
+
+</html>
+
+

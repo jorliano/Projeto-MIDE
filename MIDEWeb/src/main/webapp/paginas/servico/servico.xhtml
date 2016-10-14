@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+
+<body>
+	<ui:composition template="/template.xhtml">
+		<ui:define name="titulo">
+			<div class="page-header pull-left">
+				<div class="page-title">Serviços</div>
+			</div>
+			<ol class="breadcrumb page-breadcrumb pull-right">
+				<li><i class="fa fa-home"></i>&nbsp;<a href="#{request.contextPath}/paginas/sistema.xhtml">Home</a>&nbsp;&nbsp;<i
+					class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+				<li>Serviço</li>
+			</ol>
+
+		</ui:define>
+		<ui:define name="conteudo">
+			<t:saveState />
+
+
+			<div class="page-content">
+				<div id="tab-general">
+					<div class="row mbl">
+						<div class="col-md-12">
+							<h:form id="form" class="form-horizontal" prependId="false">
+
+								<button type="button" class="btn btn-success btn-lg"
+									data-toggle="modal" data-target="#myModal">Iniciar</button>		
+									
+								<div class="pull-right">
+								    <button class="btn btn-grey btn-lg"  jsf:action="servico_finalizado?faces-redirect=true">Terminados</button>
+								</div>	
+									
+								<h1> <label jsf:rendered="#{empty servicoBean.listaServicoAberto}" style="padding: 10%" >Não existe nenhum serviço em andamento</label></h1> 													
+
+								<h:dataTable id="tabela" var="list" rendered="#{not empty servicoBean.listaServicoAberto}"
+									value="#{servicoBean.listaServicoAberto}"
+									styleClass="table  table-hover" rows="10">
+									<f:facet name="header">
+									<div class="col-md-10">
+									  <label>Cliente</label>
+									  <label class="pull-right">Tecnico</label>
+									</div>
+									  
+									   
+									
+									</f:facet>
+									
+									<h:column>
+									
+										<ul class="timeline">
+											<li>
+												<div class="timeline-badge  primary" ><i class="icon-directions" style="font-size: 20px"  ></i></div>
+
+												<div class="timeline-panel  timeline-panel-righit side-left #{list.ordemServico.tipo}">
+													<div class="timeline-heading">
+														<h4 class="timeline-title">#{list.ordemServico.nomeCliente}</h4>
+														<small class=" "> <i
+															class="glyphicon glyphicon-time"></i> Atendimento marcado as #{list.hora} horas
+														</small>
+													</div>
+													<div class="timeline-body">													
+														<p>#{list.ordemServico.descricao}.</p>
+													</div>
+												</div> <!-- Invertido-->
+												<div class="timeline-panel timeline-panel-left side-right">
+													 <div class="timeline-heading">
+														<h4 class="timeline-title">#{list.cliente.primeiroNome} #{list.cliente.sobreNome}</h4>
+														<i class="fa fa-user"></i> Ativo
+														
+													</div>
+													<div class="timeline-body">
+														<p>#{list.cliente.sobre}.</p>
+													</div>																																					
+													
+												</div>
+											</li>
+										</ul>
+									</h:column>
+									<h:column>
+										<button jsf:id="bt_deletar" style="margin-top: 50%"
+											jsf:action="#{servicoBean.deletar}" class="btn btn-danger"
+											onclick="return confirm('Tem certeza que quer deletar ?')"
+											data-toggle="tooltip" data-placement="top" title="Excluir">
+											<i class="fa fa-trash-o"></i>
+											<f:setPropertyActionListener target="#{servicoBean.servico}"
+												value="#{list}" />
+											<f:ajax render="@form" />									
+											
+										</button>
+									</h:column>
+									<f:facet name="footer">
+							             <h:commandButton value="anterior" styleClass="btn btn-grey pull-left " action="#{servicoBean.paginaAnterior}"  rendered="#{servicoBean.paginaAtual > 10}">
+							              <f:ajax render="@form" />	
+							             </h:commandButton>
+							             <p style="text-align: center;"> <span class="badge">Pagina #{servicoBean.pagina}</span></p>
+							             <h:commandButton value="proximo " styleClass="btn btn-grey pull-right " action="#{servicoBean.proximaPagina}" rendered="#{servicoBean.listaServicoAberto.size() > 9}">
+							              <f:ajax render="@form" />	
+							             </h:commandButton>
+							        </f:facet> 
+								</h:dataTable>
+
+								<!-- Modal -->
+								<div class="modal fade" id="myModal" role="dialog">
+									<div class="modal-dialog">
+
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Iniciar Serviço</h4>
+											</div>
+											<div class="modal-body">
+												<div class="form-group">
+													<label class="col-sm-3 control-label">Ordem se
+														Erviço</label>
+
+													<div class="col-sm-9 controls">
+														<div class="row">
+															<div class="col-xs-9">
+																<h:selectOneMenu value="#{servicoBean.os.id}"
+																	styleClass="form-control">																	
+																	<f:selectItems value="#{servicoBean.listaOs}"
+																		var="os" itemValue="#{os.id}"
+																		itemLabel="#{os.nomeCliente}" />																		
+																</h:selectOneMenu>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label">Tecnico</label>
+
+													<div class="col-sm-9 controls">
+														<div class="row">
+															<div class="col-xs-9">
+																<h:selectOneMenu value="#{servicoBean.cliente.id}"
+																	styleClass="form-control">																	
+																	<f:selectItems value="#{servicoBean.listaCliente}" var="c"
+																		itemValue="#{c.id}"
+																		itemLabel="#{c.primeiroNome} #{c.sobreNome}" />
+																</h:selectOneMenu>
+															</div>
+														</div>
+													</div>
+												</div>												
+												<div class="form-group">
+													<label class="col-sm-3 control-label">Hrario</label>
+
+													<div class="col-sm-9 controls">
+														<div class="row">
+															<div class="col-xs-9">
+																<h:selectOneMenu value="#{servicoBean.servico.hora}"
+																	styleClass="form-control">
+																	<f:selectItems value="#{servicoBean.horas}" var="h"
+																		itemValue="#{h}"
+																		itemLabel="#{h}" />																																	
+																</h:selectOneMenu>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">Close</button>
+												&nbsp;
+												<button type="submit" class="btn btn-primary" jsf:action="#{servicoBean.salvar}">Iniciar</button>
+											</div>
+										</div>
+
+									</div>
+								</div>															
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ui:define>		
+	</ui:composition>
+</body>
+</html>

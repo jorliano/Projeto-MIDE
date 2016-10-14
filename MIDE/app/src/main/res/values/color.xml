@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="grey">#ddd</color>
+    <color name="black">#000000</color>
+
+    <color name="colorPrimaryLight">#BBDEFB</color>
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1976D2</color>
+
+
+    <!--color name="colorPrimaryLight">#C5CAE9</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color-->
+
+
+    <color name="colorPrimarytext">#212121</color>
+    <color name="colorSecondText">#999</color>
+    <color name="coloLink">#1ea4f7</color>
+    <color name="colorDivider">#B6B6B6</color>
+
+    <color name="colorAccent">#00BCD4</color>
+
+    <color name="colorFAB">#FF9800</color>
+    <color name="colorFABPressed">#F57C00</color>
+
+
+    <color name="mdtp_accent_color">#009688</color>
+    <color name="mdtp_accent_color_dark">#00796B</color>
+    <color name="colorContextMenu">#616161</color>
+    <color name="primary_text_default_material_light">#deffffff</color>
+    <color name="primary_text_material_light">#ffffff</color>
+
+    <array name="cores">
+        <item>#F44336</item>
+        <item>#E91E63</item>
+        <item>#9C27B0</item>
+        <item>#3F51B5</item>
+        <item>#009688</item>
+        <item>#FFC107</item>
+        <item>#795548</item>
+    </array>
+</resources>
+
+<!--resources>
+
+    <color name="colorPrimary">#607d8b</color>
+    <color name="colorPrimaryDark">#455a64</color>
+    <color name="colorAccent">#607d8b</color>
+
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecoondText">#727272</color>
+    <color name="colorText">#FFFFFF</color>
+    <color name="colorDivide">#B6B6B6</color>
+
+
+
+</resources-->

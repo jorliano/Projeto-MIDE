@@ -1,0 +1,27 @@
+/* INICIO STYLE VALIDATE PLUGIN */
+.hide {
+	display: none;
+}
+
+.validate .invalid {
+	border: 1px solid #a94442;
+	box-shadow: none;
+	background: url(../imagens/error.png) no-repeat right ;     
+	
+}
+
+.validate .valid {
+	border: 1px solid #3c763d;
+	box-shadow: none;
+	background: url(../imagens/success.png) no-repeat right;
+	
+}
+
+.validate  span {
+	border: 0px solid red;
+	color: red;
+	font-size: 11px;
+	display: block;
+}
+
+/* FIM STYLE VALIDATE PLUGIN */

@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"		
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+
+<body>
+  <ui:composition template="/template.xhtml">
+     <ui:define name="barra_pesquisa">
+       <form id="topbar-search" class="hidden-sm hidden-xs">
+				<div class="input-icon right text-white">
+						<a ><i class="fa fa-search"></i></a>
+						<input type="text" placeholder="Pesquisar por Nome" class="form-control text-white"  jsf:value="#{clienteBean.clientePesquisado}">						
+							 
+							 <f:ajax event="keyup" render=":form" execute="@this" listener="#{clienteBean.pesquisar}" />
+						</input>
+				</div>							
+					
+		</form>            
+     </ui:define>  
+     <ui:define name="titulo">
+         <div class="page-header pull-left">
+			<div class="page-title">Usuarios</div>
+		 </div>
+		 <ol class="breadcrumb page-breadcrumb pull-right">
+				<li><a href="#{request.contextPath}/paginas/sistema.xhtml">Home</a>&nbsp;&nbsp;<i
+								class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+				<li>Usuario</li>
+							
+		</ol>		
+     </ui:define>
+       
+      <ui:define name="conteudo">
+			<t:saveState />
+
+
+			<div class="page-content">
+				<div id="tab-general">
+					<div class="row mbl">
+						<div class="col-md-12">
+						 <h:form id="form">
+							<div class="panel panel-grey">
+								<div class="panel-heading pull-right">
+								 <button class="btn btn-success "  jsf:action="cadastro?faces-redirect=true">Adicionar</button>
+								
+								</div>
+								<div class="panel-body">
+									 <label jsf:rendered="#{empty clienteBean.lista}">Lista de Usuarios esta vazia</label>															
+                                                 
+									<h:dataTable id="tabela" var="list" value="#{clienteBean.lista}" 
+                                                  rendered="#{not empty clienteBean.lista}" styleClass="table  table-hover" rows="30">
+                                      
+							          <h:column >
+							              <f:facet name="header">Estatus</f:facet>
+							              #{list.estatus}                                                                     
+							          </h:column>	
+							           <h:column >
+							              <f:facet name="header">Nome</f:facet>
+							              #{list.primeiroNome}  #{list.sobreNome}                                                                            
+							          </h:column>							          
+							          <h:column>
+							              <f:facet name="header">Email</f:facet>
+							              #{list.email}
+							          </h:column>
+							          <h:column>
+							             <f:facet name="header">Telefone</f:facet>
+							             #{list.telefone} 
+							          </h:column>         
+							          <h:column>
+							          <f:facet name="header">Ações</f:facet>          
+							            <div class="pull-right">
+										 <button jsf:id="bt_editar" jsf:action="#{clienteBean.edita}"
+												class="btn btn-success"
+												data-toggle="tooltip" data-placement="top" title="Editar">
+												<i class="fa fa-pencil-square-o"></i>
+												<f:setPropertyActionListener target="#{clienteBean.cliente}" value="#{list}"/>					
+										 </button>										 										 								 
+										 &nbsp;
+							             <button jsf:id="bt_cancelar" jsf:action="#{clienteBean.deletar}"
+							                     class="btn #{list.estatus}"  onclick="return confirm('Usuario será desativado?')"
+							                     data-toggle="tooltip" data-placement="top" title="Estatus" ><i class="fa fa-user"></i>
+							                     <f:setPropertyActionListener target="#{clienteBean.cliente}" value="#{list}"/>   
+							                     <f:ajax render="@form"/>                      
+							             </button>              
+							             </div>        
+							          </h:column>  
+							          <f:facet name="footer">
+							            <h:commandButton value="Carregar mais dados" styleClass="btn btn-grey btn-block " action="#{clienteBean.carregarMais}" 
+							                  rendered="#{clienteBean.lista.size() > 14 }"/>
+							          </f:facet>            
+									</h:dataTable>
+									
+								</div>
+							</div>
+						  </h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ui:define>         	                 
+   </ui:composition>
+</body> 
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:jsf="http://xmlns.jcp.org/jsf"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<title>MIDE</title>
+	<meta charset="utf-8" />	
+	<meta  HTTP-EQUIV="refresh" content="300"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="#{request.contextPath}/imagens/favicon.ico" rel="shortcut icon" /><!-- Web Fonts -->
+
+	<!-- Bootstrap -->
+	<link href="#{request.contextPath}/css/bootstrap.min.css"
+		rel="stylesheet" type="text/css" />
+	<!--fonte de icones externa -->
+	<link rel="stylesheet"
+		href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet"
+		href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700" />
+	<link type="text/css" rel="stylesheet"
+		href="http://fonts.googleapis.com/css?family=Oswald:400,700,300" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.3.2/css/simple-line-icons.css"/>
+	<!-- Css -->
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/jquery-ui-1.10.4.custom.min.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/animate.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/main.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/style-responsive.css" />
+	<link href="#{request.contextPath}/css/validate.css" rel="stylesheet"
+		type="text/css" />
+	<link href="#{request.contextPath}/css/customizado.css" rel="stylesheet"
+		type="text/css" />
+	<link href="#{request.contextPath}/css/chat.css" rel="stylesheet"
+	    type="text/css"/>	
+
+
+
+</h:head>
+<h:body>
+	<div>
+
+		<!--BEGIN BACK TO TOP-->
+		<a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
+		<!--END BACK TO TOP-->
+		<!--BEGIN TOPBAR-->
+		<div id="header-topbar-option-demo" class="page-header-topbar">
+			<nav id="topbar" role="navigation" style="margin-bottom: 0;"
+				data-step="3" class="navbar navbar-default navbar-static-top">
+			<div class="navbar-header">
+				<button type="button" data-toggle="collapse"
+					data-target=".sidebar-collapse" class="navbar-toggle">
+					<span class="sr-only">Toggle navigation</span><span
+						class="icon-bar"></span><span class="icon-bar"></span><span
+						class="icon-bar"></span>
+				</button>
+				<a id="logo" href="#" class="navbar-brand"><span
+					class="fa fa-rocket"></span><span class="logo-text">MIDE</span><span
+					style="display: none" class="logo-text-icon"></span></a>
+			</div>
+			<div class="topbar-main">
+				<a id="menu-toggle" href="#" class="hidden-xs"><i
+					class="fa fa-bars"></i></a>
+                <ui:insert name="barra_pesquisa"></ui:insert>  				
+                <h:form>				
+					<div class="pull-right text-white" style="padding: 1% ; margin-right: 5px">
+					 #{usuarioLogado.usuario.primeiroNome} | <h:commandLink action="#{usuarioBean.deslogar}" value="sair" styleClass="text-white " ></h:commandLink>
+					
+					</div>						
+				</h:form>
+			</div>
+			</nav>
+		</div>
+		<!--END TOPBAR-->
+		<div id="wrapper">
+			<!--BEGIN SIDEBAR MENU-->
+			<nav id="sidebar" role="navigation" data-step="2"
+				data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"
+				data-position="right" class="navbar-default navbar-static-side">
+			<div class="sidebar-collapse menu-scroll">
+				<ul id="side-menu" class="nav">
+
+					<div class="clearfix"></div>
+					<li ><a href="#{request.contextPath}/paginas/sistema.xhtml"><i
+							class="fa  fa-home fa-fw">
+								<div class="icon-bg bg-orange"></div>
+						</i><span class="menu-title">Inicio</span></a></li>
+					<li><a href="#{request.contextPath}/paginas/monitoramento.xhtml"><i
+							class="fa fa-desktop fa-fw">
+					           <div class="icon-bg bg-pink"></div>
+						</i><span class="menu-title">Monitoramento</span></a></li>
+					<li><a href="#{request.contextPath}/paginas/os/os.xhtml"><i
+							class="fa fa-tasks fa-fw">									
+								<div class="icon-bg bg-pink"></div>
+						</i><span class="menu-title">Ordem de Serviço</span></a></li>
+					<li><a href="#{request.contextPath}/paginas/servico/servico.xhtml"><i
+							class="fa fa-send-o fa-fw">
+								<div class="icon-bg bg-green"></div>
+						</i><span class="menu-title">Serviço</span></a></li>
+					<li><a href="#{request.contextPath}/paginas/usuario/usuario.xhtml"><i
+							class="fa fa-user-secret fa-fw">
+								<div class="icon-bg bg-violet"></div>
+						</i><span class="menu-title">Administrador</span></a></li>
+					<li><a href="#{request.contextPath}/paginas/cliente/cliente.xhtml"><i
+							class="fa fa-user fa-fw">
+								<div class="icon-bg bg-blue"></div>
+						</i><span class="menu-title">Usuario</span></a></li>
+														
+				</ul>
+			</div>
+			</nav>
+			<!--END SIDEBAR MENU-->			
+			
+			<!-- BEGIN QUICK SIDEBAR TOGGLER -->
+                <button type="button" class="quick-sidebar-toggler" data-toggle="collapse">
+                    <span class="sr-only">Toggle Quick Sidebar</span>
+                    <i class="icon-bubbles"></i>                   
+                </button>
+                <!-- END QUICK SIDEBAR TOGGLER -->
+    
+			    <!-- BEGIN QUICK SIDEBAR -->
+			       
+			        <div class="page-quick-sidebar-wrapper" data-close-on-body-click="false">
+			            <div class="page-quick-sidebar">
+			                <ul class="nav nav-tabs">
+			                    <li class="active">
+			                        <a href="javascript:;" data-target="#quick_sidebar_tab_1" data-toggle="tab"> Chat com os usuarios			                            
+			                        </a>
+			                    </li>			                   
+			                </ul>
+			                 <a href="javascript:;" class="page-quick-sidebar-toggler">
+						         <i class="icon-login"></i>
+						     </a>
+			                <div class="tab-content">
+			                    <div class="tab-pane active page-quick-sidebar-chat" id="quick_sidebar_tab_1">
+			                        <div class="page-quick-sidebar-chat-users" data-rail-color="#ddd" data-wrapper-class="page-quick-sidebar-list">
+			                            <h3 class="list-heading">Ativos</h3>
+			                            <ul class="media-list list-items users">
+			                                <li class="media todos">
+			                                   
+			                                    
+			                                    <div class="media-body">
+			                                        <h4 class="media-heading">Todos</h4>
+			                                        <div class="media-heading-sub"> Usuarios ativos </div>
+			                                    </div>
+			                                </li>                                 
+			                                
+			                                <li id="item0" class="media"/>    
+			                                <li id="item1" class="media"/>
+									        <li id="item2" class="media"/>
+									        <li id="item3" class="media"/>
+									        <li id="item4" class="media"/>
+									        <li id="item5" class="media"/>
+									        <li id="item6" class="media"/>
+									        <li id="item7" class="media"/>
+									        <li id="item8" class="media"/>
+									        <li id="item9" class="media"/>
+									        <li id="item10" class="media"/>
+									        
+			                                                              
+			                            </ul>         
+			                                                                    
+			                        </div>
+			                        <div class="page-quick-sidebar-item">
+			                            <div class="page-quick-sidebar-chat-user">
+			                                <div class="page-quick-sidebar-nav">
+			                                    <a href="javascript:;" class="page-quick-sidebar-back-to-list">
+			                                        <i class="icon-arrow-left-circle"></i>Voltar</a>
+			                                </div>
+			                                <div class="page-quick-sidebar-chat-user-messages">                                   
+			                                    <!-- >div class="post out">
+			                                        <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar3.jpg" />
+			                                        <div class="message">
+			                                            <span class="arrow"></span>
+			                                            <label class="name">Bob Nilson</label>
+			                                            <span class="datetime">20:17</span>
+			                                            <span class="body"> Great! Thanks. Will check it right away. </span>
+			                                        </div>
+			                                    </div>
+			                                    <div class="post in">
+			                                        <i class="avatar fa fa-user fa-3x" alt=""  />
+			                                        <div class="message">
+			                                            <span class="arrow"></span>
+			                                            <label class="name">Ella Wong</label>
+			                                            <span class="datetime">20:40</span>
+			                                            <span class="body"> Please let me know if you have any comment. </span>
+			                                        </div>
+			                                    </div-->                                    
+			                                </div>
+			                                <div class="page-quick-sidebar-chat-user-form">
+			                                    <div class="input-group">
+			                                        <input type="text" class="form-control" placeholder="Digite a mensage aqui..."/>
+			                                        <div class="input-group-btn">
+			                                            <button type="button" class="btn green chat_mensage" name="chat">
+			                                                <i class="fa fa-send"></i>
+			                                            </button>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                    
+			                </div>
+			            </div>
+			        </div>
+			<!-- END QUICK SIDEBAR -->							
+			
+			<!--BEGIN PAGE WRAPPER-->
+			<div id="page-wrapper">
+				<!--BEGIN TITLE & BREADCRUMB PAGE-->
+				<div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+					<ui:insert name="titulo">						
+					</ui:insert>
+					<div class="clearfix"></div>
+				</div>
+				<!-- MENSSAGE -->
+				<h:messages id="msg"
+										style="width: 35%;position: absolute;margin-left: 65%;margin-top: -4%; list-style-type:none;"
+										showDetail="false" errorClass="alert alert-danger "
+										warnClass="alert alert-warning"
+										fatalClass="alert alert-success" infoClass="alert alert-info"/>
+	             <!-- LOAD -->
+	             <p:ajaxStatus>
+						<f:facet name="start">
+							<img src="#{request.contextPath}/imagens/load/loader.gif"
+								width="50" height="50"  />
+						</f:facet>
+						<f:facet name="complete">
+								<img src="" />
+						</f:facet>
+				 </p:ajaxStatus>		
+											
+				<!--END TITLE & BREADCRUMB PAGE-->
+				
+				<!--INSERIR CONTEUDO-->
+				<ui:insert name="conteudo"/>					
+				
+			</div>
+			<!--END CONTENT-->
+
+			<!--BEGIN FOOTER-->
+			<div id="footer" >
+				<div class="copyright">
+					<a href="#" class="pull-right">2016 © Jortec </a>
+				</div>
+			</div>
+			<!--END FOOTER-->
+		</div>
+		<!--END PAGE WRAPPER-->
+	</div>
+	<!-- jQuery -->
+	<ui:insert name="script"><script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	</ui:insert>	
+	<script type="text/javascript"
+		src="#{request.contextPath}/js/jquery.validate.js"></script>
+	<!-- Bootstrap -->
+	<script type="text/javascript"
+		src="#{request.contextPath}/js/bootstrap.min.js"></script>
+
+
+	<script src="#{request.contextPath}/js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="#{request.contextPath}/js/jquery-ui.js"></script>
+	<script src="#{request.contextPath}/js/bootstrap-hover-dropdown.js"></script>
+	<script src="#{request.contextPath}/js/respond.min.js"></script>
+	<script src="#{request.contextPath}/js/custom.min.js"></script>
+	<script src="#{request.contextPath}/js/jquery.metisMenu.js"></script>
+	<script src="#{request.contextPath}/js/jquery.menu.js"></script>	
+	<script src="#{request.contextPath}/js/jquery.flot.tooltip.js"></script>
+	<!--CORE JAVASCRIPT-->
+    <script src="#{request.contextPath}/js/main.js"></script>
+    <script src="#{request.contextPath}/js/chat.js"></script>
+	<script src="#{request.contextPath}/js/init_chat.js"></script>
+	<script src="#{request.contextPath}/js/scrol_chat.js"></script>
+	
+	<ui:insert name="grafico"></ui:insert>
+	  
+
+	<script>
+	jQuery(function($){
+		
+  	    $(".telefone").mask("(99) 99999-9999");  	    
+  	    $(".data").mask("99/99/9999");
+  	   // $(".ip").mask("999.999.999.999");  	    
+    });
+	</script>
+
+
+</h:body>
+</html>

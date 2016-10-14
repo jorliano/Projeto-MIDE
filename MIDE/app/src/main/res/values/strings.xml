@@ -1,0 +1,77 @@
+<resources>
+    <string name="app_name">MIDE</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="login">Login</string>
+    <string name="senha">Senha</string>
+    <string name="logar">Logar</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="usuario">Usuario</string>
+    <string name="os">OS</string>
+    <string name="sobre">Sobre</string>
+    <string name="title_activity_ordem_servico">OrdemServicoActivity</string>
+    <string name="tituloPrincipal">Lista de OS</string>
+    <string name="tituloBarraOs">Ordem de Serviço</string>
+    <string name="tituloBarraOsFechada">Fechamento de Os</string>
+    <string name="tituloBarraOsMaterial">Material utilizado</string>
+    <string name="tituloBarraOsIMagem">Imagens</string>
+    <string name="title_activity_fechar_os">FecharOsActivity</string>
+    <string name="nome">Nome</string>
+    <string name="autenticacao">Autenticação</string>
+    <string name="observacao">Observação</string>
+    <string name="dados_acesso">Dados de acesso</string>
+    <string name="endereco">Endereço</string>
+    <string name="bairro">Bairro</string>
+    <string name="cidade">Cidade</string>
+    <string name="telefone">Telefone</string>
+
+    <!--Array de itens para os spinner -->
+    <array name="itens_tipo_os">
+        <item>Encerrado com sucesso</item>
+        <item>Pendente</item>
+        <item>Cancelada</item>
+    </array>
+
+    <array name="itens_parentesco">
+        <item>O proprio</item>
+        <item>Empregada</item>
+        <item>Parente</item>
+        <item>Porteiro</item>
+        <item>Outros</item>
+    </array>
+
+    <array name="itens_pagamento">
+        <item>Tipo de pagamento</item>
+        <item>Dinheiro</item>
+        <item>Cartão</item>
+    </array>
+
+    <array name="itens_material">
+        <item>Cabo de rede</item>
+        <item>Cabo eletrico</item>
+        <item>Conector RJ45</item>
+        <item>Mastro de parede</item>
+        <item>Mastro de piso</item>
+        <item>Radio</item>
+        <item>Antena 23db</item>
+        <item>Antena 25db</item>
+        <item>Antena 27db</item>
+        <item>Braçadeira</item>
+    </array>
+
+
+    <string name="title_activity_imagen">ImagenActivity</string>
+    <string name="title_activity_material">MaterialActivity</string>
+    <string name="contato">Contato</string>
+    <string name="titulo_dialogo">Aviso</string>
+    <string name="contexto_dialogo">Voçê deseja salvar os dados ?</string>
+    <string name="title_activity_login_segundo">LoginSegundoActivity</string>
+    <string name="title_activity_usuario">UsuarioActivity</string>
+    <string name="title_activity_sobre">SobreActivity</string>
+    <string name="sim">SIM</string>
+    <string name="nao">NÂO</string>
+    <string name="chat">Chat</string>
+    <string name="tituloBarraChat">Chat com o Sistema</string>
+    <string name="title_activity_chat">ChatActivity</string>
+</resources>

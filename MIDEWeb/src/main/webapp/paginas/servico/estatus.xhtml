@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<body>
+	<ui:composition template="/template.xhtml">
+		<ui:define name="titulo">
+			<div class="page-header pull-left">
+				<div class="page-title">Detalhes do serviço Nº
+					#{servicoFinalizadoBean.servico.id}</div>
+			</div>
+			<ol class="breadcrumb page-breadcrumb pull-right">
+				<li><i class="fa fa-home"></i>&nbsp;<a href="#{request.contextPath}/paginas/sistema.xhtml">Home</a>&nbsp;&nbsp;<i
+					class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+				<li><a href="servico_finalizado.xhtml">Serviço terminado</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+				<li>Detalhes</li>
+			</ol>
+		</ui:define>
+		<ui:define name="conteudo">			
+			<div class="page-content">
+				<div id="tab-general">
+					<div class="row mbl">
+						<div class="col-md-12">
+							<h2>Tecnico</h2>
+							<div class="row mtl">
+								<div class="col-md-6">
+									<table class="table table-striped table-hover">
+										<tbody>
+											<tr>
+												<td>Nome</td>
+												<td>#{servicoFinalizadoBean.servico.cliente.primeiroNome}</td>
+											</tr>
+											<tr>
+												<td>Sobrenome</td>
+												<td>#{servicoFinalizadoBean.servico.cliente.sobreNome}</td>
+											</tr>
+											<tr>
+												<td>Email</td>
+												<td>#{servicoFinalizadoBean.servico.cliente.email}</td>
+											</tr>
+											<tr>
+												<td>Nome de usuario</td>
+												<td>#{servicoFinalizadoBean.servico.cliente.login}</td>
+											</tr>
+											<tr>
+												<td>Telefone</td>
+												<td>#{servicoFinalizadoBean.servico.cliente.telefone}</td>
+											</tr>
+											<tr>
+												<td>Statos</td>
+												<td><span class="label label-success">#{servicoFinalizadoBean.servico.cliente.estatus}</span></td>
+											</tr>
+										</tbody>																																					
+									  </table>
+									  
+									    <p:galleria value="#{servicoFinalizadoBean.imagens}" var="image" rendered="#{not empty servicoFinalizadoBean.imagens}" 
+										           panelWidth="480" panelHeight="300" showCaption="true" style="text-align: center;" >
+										           <p:graphicImage title="#{image}" value="/#{image}" height="100%" width="auto"  />
+								     	</p:galleria>
+										<div class="panel panel-grey" style="margin-top: 20px">
+											<div class="panel-heading">Material Utilizado</div>
+												<div class="panel-body">
+	                                                    <label jsf:rendered="#{empty servicoFinalizadoBean.listaMaeriais}">Nenhum material foi utilizado</label>
+	                                                         
+													<h:dataTable id="tabela" var="list" rendered="#{not empty servicoFinalizadoBean.listaMaeriais}" 
+															value="#{servicoFinalizadoBean.listaMaeriais}"
+															styleClass="table  table-hover" rows="20">
+															  <h:column>
+																<f:facet name="header">Descrição</f:facet>
+												                #{list.descricao}                                                                                           
+												              </h:column>
+															  <h:column>
+																<f:facet name="header">Quantidade</f:facet>
+												                  #{list.quantidade}
+												               </h:column>
+													</h:dataTable>
+	
+													</div>
+												</div>		
+									     </div>
+								  <div class="col-md-6">
+									<div id="generalTabContent" class="tab-content">
+										<h:form id="form" class="form-horizontal validate"
+											prependId="false">
+
+											<h2>Dados do serviço</h2>
+
+											<h5><div class="form-group">
+												<label class="col-sm-4 control-label">Nome do
+													cliente</label>
+
+												<div class="col-sm-8 controls">
+													<div class="row">
+														<div class="col-xs-8">
+															<label class="control-label">#{servicoFinalizadoBean.servico.ordemServico.nomeCliente}</label>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-4 control-label">Responsavel no
+													local</label>
+
+												<div class="col-sm-8 controls">
+													<div class="row">
+														<div class="col-xs-8">                                            
+															<label class=" control-label">#{servicoFinalizadoBean.servico.nomeCliente}</label>															
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-4 control-label">Parentesco do responsavel</label>
+
+												<div class="col-sm-8 controls">
+													<div class="row">
+														<div class="col-xs-8">                                            
+															<label class=" control-label">#{servicoFinalizadoBean.servico.parentesco}</label>												
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-4 control-label">Encerramento</label>
+
+												<div class="col-sm-8 controls">
+													<div class="row">
+														<div class="col-xs-8">
+															<label class=" control-label">#{servicoFinalizadoBean.servico.encerramento}</label>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-4 control-label">Data do serviço</label>
+												<div class="col-sm-8 controls">
+													<div class="row">
+														<div class="col-xs-8">															
+															<h:outputLabel value="#{servicoFinalizadoBean.servico.data}" styleClass="control-label">
+															 <f:convertDateTime type="date" locale="pt_BR" ></f:convertDateTime>
+															</h:outputLabel>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-4 control-label">Data do final
+													do servicoo</label>
+
+												<div class="col-sm-8 controls">
+													<div class="row">
+														<div class="col-xs-8">																											
+															<h:outputLabel value="#{servicoFinalizadoBean.servico.dataEncerramento}" styleClass="control-label">
+															  <f:convertDateTime type="date" locale="pt_BR" ></f:convertDateTime>
+															</h:outputLabel>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-4 control-label">Descrição</label>	
+												<div class="col-sm-8 controls">
+													<div class="row">
+														<div class="col-md-10">
+															<textarea rows="4" class="form-control" jsf:value="#{servicoFinalizadoBean.servico.descricao}" readonly="true" />
+														</div>
+													</div>
+												</div>
+										    </div>
+											</h5>
+											<h2>Dados financeiro</h2>
+											<h5><div class="form-group">
+												<label class="col-sm-4 control-label">Valor do serviço</label>
+
+												<div class="col-sm-8 controls">
+													<div class="row">
+														<div class="col-xs-8">
+														    <h:outputLabel value="#{servicoFinalizadoBean.servico.venda.pagamento}" styleClass="control-label">
+														      <f:convertNumber minFractionDigits="2" />
+														    </h:outputLabel>															
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-4 control-label">Forma de pagamento</label>
+
+												<div class="col-sm-8 controls">
+													<div class="row">
+														<div class="col-xs-8">
+															<label class=" control-label">#{servicoFinalizadoBean.servico.venda.tipo}</label>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-4 control-label">Equipamento</label>
+
+												<div class="col-sm-8 controls">
+													<div class="row">
+														<div class="col-xs-8">
+															<label class=" control-label">#{servicoFinalizadoBean.servico.venda.equipamento}</label>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-4 control-label">Quantidade vendida</label>
+
+												<div class="col-sm-8 controls">
+													<div class="row">
+														<div class="col-xs-8">
+															<label class=" control-label">#{servicoFinalizadoBean.servico.venda.quantidade}</label>
+														</div>
+													</div>
+												</div>
+											</div></h5>
+										</h:form >
+
+									</div>										
+									
+																						
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>		
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

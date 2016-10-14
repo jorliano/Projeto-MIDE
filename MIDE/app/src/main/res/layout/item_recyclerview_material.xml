@@ -1,0 +1,63 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="20dp"
+    android:paddingLeft="16dp"
+    android:paddingStart="16dp">
+
+    <TextView
+        android:id="@+id/icon_recycler_material"
+        android:layout_alignParentLeft="true"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginEnd="6dp"
+        android:textColor="@android:color/white"
+        android:textSize="40sp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="1"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_toRightOf="@+id/icon_recycler_material"
+        android:layout_toEndOf="@+id/icon_recycler_material"
+        android:id="@+id/tv_titulo_recycler_material"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="teste"
+        android:paddingRight="16dp"
+        android:textSize="20sp" />
+
+
+
+
+    <TextView
+        android:layout_toRightOf="@+id/icon_recycler_material"
+        android:layout_toEndOf="@+id/icon_recycler_material"
+        android:id="@+id/tv_subtitulo_recycler_material"
+        android:layout_below="@+id/tv_titulo_recycler_material"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20 Unidades"
+        android:layout_marginBottom="5dp"
+        android:paddingRight="16dp"
+        android:textSize="18sp" />
+
+</RelativeLayout>
+
+<View
+    android:id="@+id/vw_divider"
+    android:layout_marginTop="10dp"
+    android:layout_below="@+id/im_recycler_material"
+    android:background="@color/colorDivider"
+    android:layout_width="match_parent"
+    android:layout_height="0.8dp" />
+
+</LinearLayout>

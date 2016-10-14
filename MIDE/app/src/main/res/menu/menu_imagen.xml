@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.com.jortec.mide.ImagenActivity">
+
+    <item
+        android:id="@+id/menu_importar"
+        android:orderInCategory="100"
+        android:title=""
+        android:icon="@drawable/import_file"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_savalr_imagem"
+        android:orderInCategory="100"
+        android:icon="@drawable/save"
+        app:showAsAction="always"
+        android:title="" />
+
+</menu>

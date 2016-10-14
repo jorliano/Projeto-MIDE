@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"		
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+
+<body>
+  <ui:composition template="/template.xhtml">
+    <ui:define name="titulo">
+         <div class="page-header pull-left">
+			<div class="page-title">Monitoramento <i style="margin-left: 4%"> #{servicoBean.data}</i></div>           
+		 </div>
+		 <ol class="breadcrumb page-breadcrumb pull-right">
+				<li><i class="fa fa-home"></i>&nbsp;<a href="sistema.xhtml">Home</a>&nbsp;&nbsp;<i
+								class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>				
+				<li>Monitoramento</li>
+							
+		</ol>
+		
+      </ui:define> 
+       
+      <ui:define name="conteudo">			
+ 
+
+			<div class="page-content">
+				<div id="tab-general">
+					<div class="row mbl">						
+					 <div class="col-lg-12">
+					     	  <button type="button" class="btn btn-success btn-small"
+									data-toggle="modal" data-target="#myModal">Gera relatoro</button>								
+							  <a href="#{servicoBean.linkRelatorio}" type="btn" class="btn btn-primary btn-small"
+							       data-toggle="tooltip" data-placement="top" title="Imprimir Relatorio"><i class="fa fa-print"></i></a>
+							   <div class="col-xs-3 pull-right">
+								   <h:selectOneMenu value="#{servicoBean.cliente.id}" styleClass="form-control "  id="selectUser">		
+										<f:selectItem itemValue="0" itemLabel="Todos" />															
+										<f:selectItems value="#{servicoBean.listaCliente}" var="c" itemValue="#{c.id}"
+																									itemLabel="#{c.primeiroNome} #{c.sobreNome}" />
+									</h:selectOneMenu>    	
+								</div>		
+										
+                                <div class="timeline-centered timeline-sm">
+                                    <article class="timeline-entry add">
+                                    <div class="timeline-entry-inner">
+                                        <time datetime="2014-01-10T03:45" class="timeline-time"><span>00:00 Inicio</span><span></span></time>
+                                        <div class="timeline-icon bg-violet"><i class="fa fa-exclamation"></i></div>                                        
+                                    </div>
+                                  </article>
+                                    
+                                </div>
+                            </div>                          
+					</div>
+				</div>
+			</div>
+			
+			<h:form id="form" class="form-horizontal" prependId="false">
+			      <div class="modal fade" id="myModal" role="dialog">
+									<div class="modal-dialog">
+
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Relatorio</h4>
+											</div>
+											<div class="modal-body">
+												<div class="form-group">
+													<label class="col-sm-3 control-label">Periodo</label>
+
+													<div class="col-sm-9 controls">
+														<div class="row">
+															<div class="col-xs-9">
+																<h:selectOneMenu value="#{servicoBean.periodo}"
+																	styleClass="form-control">																	
+																	<f:selectItem itemValue="dia" itemLabel="Diario" />
+																	<f:selectItem itemValue="mes" itemLabel="Mensal" />																																
+																</h:selectOneMenu>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label">Referente</label>
+
+													<div class="col-sm-9 controls">
+														<div class="row">
+															<div class="col-xs-9">
+																<h:selectOneMenu value="#{servicoBean.cliente.id}"
+																	styleClass="form-control">		
+																	<f:selectItem itemValue="0" itemLabel="Todos" />															
+																	<f:selectItems value="#{servicoBean.listaCliente}" var="c"
+																		itemValue="#{c.id}"
+																		itemLabel="#{c.primeiroNome} #{c.sobreNome}" />
+																</h:selectOneMenu>
+															</div>
+														</div>
+													</div>
+												</div>												
+												<div class="form-group">			
+												   <label class="col-sm-2 control-label">Data</label>									
+													<div class="col-sm-10 controls">
+														<div class="row">
+															<div class="col-xs-3">
+																<h:selectOneMenu value="#{servicoBean.dia}"
+																	styleClass="form-control">		
+																	<f:selectItem  itemLabel="Dia"/>															
+																	<f:selectItems value="#{servicoBean.dias}" var="d"
+																		itemValue="#{d}"
+																		itemLabel="#{d}" />
+																</h:selectOneMenu>
+															</div>
+															<div class="col-xs-4">
+																<h:selectOneMenu value="#{servicoBean.mes}"
+																	styleClass="form-control">		
+																	<f:selectItem  itemLabel="Mes" />															
+																	<f:selectItems value="#{servicoBean.meses}" var="m"
+																		itemValue="#{m}"
+																		itemLabel="#{m}" />
+																</h:selectOneMenu>
+															</div>
+															<div class="col-xs-3">
+																<h:selectOneMenu value="#{servicoBean.ano}"
+																	styleClass="form-control">		
+																	<f:selectItem  itemLabel="Ano" />															
+																	<f:selectItems value="#{servicoBean.anos}" var="a"
+																		itemValue="#{a}"
+																		itemLabel="#{a}" />
+																</h:selectOneMenu>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">Close</button>
+												&nbsp;
+												<button type="submit" class="btn btn-primary" jsf:action="#{servicoBean.gerarRelatorio}">Gerar</button>
+											</div>
+										</div>
+
+									</div>
+								</div>			
+			
+			
+			</h:form>
+			
+			<script>						
+			
+			
+			url = "http://jortec.ddns.net/WebServiceMIDE/servico/monitorar/0";
+			
+			$('#selectUser').on('change', function (e) {
+			    var optionSelected = $("option:selected", this);   	    
+			   
+			    url = "http://jortec.ddns.net/WebServiceMIDE/servico/monitorar/"+this.value;
+			   
+			    $( ".adicionado" ).remove();
+			    carregarDados(url);
+			});
+			
+			$(function(){
+				carregarDados(url);
+			});
+			
+			function carregarDados(url){	
+				 $.getJSON(url, function(data) {
+				   console.log(data);   
+				   
+				   $.each(data , function(i, v) {
+					   
+					   var cor = 'bg-orange' ;
+					   var icone = 'fa fa-wifi';
+					   if(v.encerramento == 'instalacao'){
+						   cor = 'bg-green';	
+						   icone ='fa fa-cog';
+						   
+					   }else  if(v.encerramento == 'recolhimento'){
+						   cor = 'bg-red';
+						   icone ='fa fa-trash';
+					   }
+					  
+			            	  
+			             if(i % 2 == 0){	
+			            			
+			            	 
+			            	 var html_direita  = '<article class="timeline-entry left-aligned adicionado">';
+						        html_direita += ' <div class="timeline-entry-inner">';
+						        html_direita += '<time class="timeline-time">';
+						        html_direita += '<span>'+v.hora+'</span><span>Hoje</span>';
+						        html_direita += '</time>';
+						        html_direita += '<div class="timeline-icon bg-green"><i class="'+icone+'"></i></div>';
+						        html_direita += '<div class="timeline-label '+cor+'"><h4 class="timeline-title">'+v.encerramento+'</h4>';
+						        html_direita += ' <p>'+v.descricao+'</p></div>';
+						        html_direita += '</div>';
+						        html_direita += '</article>';
+			                // $(".timeline-sm").append(html_direita);
+			                 $( html_direita ).insertBefore( ".add" );
+			              }
+			              else{			            	 
+			            	  	 
+			            	   var html_esquerdo  = '<article class="timeline-entry adicionado">';
+							     html_esquerdo += ' <div class="timeline-entry-inner">';
+							     html_esquerdo += '<time class="timeline-time">';
+							     html_esquerdo += '<span>'+v.hora+'</span><span>Hoje</span>';
+							     html_esquerdo += '</time>';
+							     html_esquerdo += '<div class="timeline-icon bg-green"><i class="'+icone+'"></i></div>';
+							     html_esquerdo += '<div class="timeline-label '+cor+'"><h4 class="timeline-title">'+v.encerramento+'</h4>';
+							     html_esquerdo += ' <p>"'+v.descricao+'</p></div>';
+							     html_esquerdo += '</div>';
+							     html_esquerdo += '</article>';  
+			            	  //$(".timeline-sm").append(html_esquerdo);
+							    $( html_esquerdo ).insertBefore( ".add" );
+			             }
+			            	  
+			              
+				 });
+			  			          		            
+		            
+				   
+	          });	
+			 
+			}
+				
+			</script>   
+		</ui:define>         	                 
+   </ui:composition>    
+   
+   
+</body> 
+</html>

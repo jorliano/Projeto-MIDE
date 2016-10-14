@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    tools:context="br.com.jortec.mide.OrdemServicoActivity">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/os_toolbar"
+        android:layout_marginBottom="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_tipo_os"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipo da OS"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold"
+                android:layout_marginLeft="16dp"/>
+            <TextView
+                android:id="@+id/tv_data_os"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="10/10/215"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"/>
+
+            <TextView
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_tipo_os"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorDivider"
+                android:gravity="center_horizontal"
+                android:text="Dados do Cliente"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/white"/>
+
+            <TableLayout
+                android:id="@+id/tb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider"
+                android:layout_marginTop="10dp">
+
+                <!-- 2 columns -->
+                <TableRow
+                    android:id="@+id/tableRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip">
+
+                    <TextView
+                        android:id="@+id/tv_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="30dp"
+                        android:text="@string/nome"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tv_nome_os"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                </TableRow>
+                <!-- 2 columns -->
+                <TableRow
+                    android:id="@+id/tableRow1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip">
+
+                    <TextView
+                        android:id="@+id/tv_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="30dp"
+                        android:text="@string/contato"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tv_contato_os"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                </TableRow>
+                <!-- 2 columns -->
+                <TableRow
+                    android:id="@+id/tableRow2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip">
+
+                    <TextView
+                        android:id="@+id/tv_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="30dp"
+                        android:text="@string/endereco"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tv_endereco_os"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                </TableRow>
+                <!-- 2 columns -->
+                <TableRow
+                    android:id="@+id/tableRow3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip">
+
+                    <TextView
+                        android:id="@+id/tv_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="30dp"
+                        android:text="@string/bairro"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tv_bairro_os"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                </TableRow>
+                <!-- 2 columns -->
+                <TableRow
+                    android:id="@+id/tableRow4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip">
+
+                    <TextView
+                        android:id="@+id/tv_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="30dp"
+                        android:text="@string/cidade"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tv_cidade_os"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                </TableRow>
+                <!-- 2 columns -->
+                <TableRow
+                    android:id="@+id/tableRow5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip">
+
+                    <TextView
+                        android:id="@+id/tv_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="30dp"
+                        android:text="@string/telefone"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tv_telefone_os"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                </TableRow>
+
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tb"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorDivider"
+                android:gravity="center_horizontal"
+                android:text="Dados do Problema"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/divider2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/autenticacao"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tv_autenticacao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+                <TextView
+                    android:id="@+id/tv_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/dados_acesso"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tv_dados_acesso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+                <TextView
+                    android:id="@+id/tv_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/observacao"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tv_descricao_os"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            fab:menu_colorPressed="@color/colorPrimary"
+            fab:menu_labels_ellipsize="end"
+            fab:menu_labels_singleLine="true">
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab_navegar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/map"
+                fab:fab_colorPressed="@color/colorPrimary"
+                fab:fab_label="Navegar"
+                fab:fab_size="mini" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab_encerrar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/encerrar"
+                fab:fab_colorPressed="@color/colorPrimary"
+                fab:fab_label="Encerrar"
+                fab:fab_size="mini" />
+
+
+        </com.github.clans.fab.FloatingActionMenu>
+
+    </FrameLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+
+<body>
+	<ui:composition template="/template.xhtml">
+	      <ui:define name="barra_pesquisa">
+           <form id="topbar-search" class="hidden-sm hidden-xs">
+				<div class="input-icon right text-white">
+						<a ><i class="fa fa-search"></i></a>
+						<input type="text" placeholder="Pesquisar por Codigo" class="form-control text-white"  jsf:value="#{servicoFinalizadoBean.servicoPesquisado}">												 
+							 <f:ajax event="keyup" render=":form" execute="@this" listener="#{servicoFinalizadoBean.pesquisar}" />
+						</input>
+				</div>									
+	  	   </form>            
+        </ui:define>  
+		<ui:define name="titulo">
+			<div class="page-header pull-left">
+				<div class="page-title">Serviços</div>
+			</div>
+			<ol class="breadcrumb page-breadcrumb pull-right">
+				<li><i class="fa fa-home"></i>&nbsp;<a href="#{request.contextPath}/paginas/sistema.xhtml">Home</a>&nbsp;&nbsp;<i
+					class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+				<li><a href="servico.xhtml">Serviço</a>&nbsp;&nbsp;<i
+					class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>	
+				<li>serviço terminado</li>
+			</ol>
+
+		</ui:define>
+		<ui:define name="conteudo">
+			<t:saveState />
+			<div class="page-content">
+				<div id="tab-general">
+					<div class="row mbl">
+						<div class="col-md-12">						
+							<h:form id="form" class="form-horizontal" prependId="false">
+                              <div class="panel panel-grey">
+								<div class="panel-heading">
+								 Serviços finalizados																 									
+								</div>
+								<div class="panel-body">
+																	
+								 <label jsf:rendered="#{empty servicoFinalizadoBean.listaServicoFechado}">Não existe nenhum serviço pendente</label>													
+																		
+								<h:dataTable id="tabela" var="list" rendered="#{not empty servicoFinalizadoBean.listaServicoFechado}"
+									value="#{servicoFinalizadoBean.listaServicoFechado}"
+									styleClass="table  table-hover" rows="30">
+									
+									<h:column>
+									    Serviço Nº #{list.id}
+									</h:column>
+									<h:column>
+									   Cliente #{list.ordemServico.nomeCliente}																																    								  	
+									</h:column>
+									<h:column >		
+									  <div class="pull-right">																																			
+											<a href="https://www.google.com.br/maps/place/#{list.latitude}#{list.longitude}" target="_blank" ><i class="btn btn-orange fa fa-map-marker"> Localização</i></a>											
+											&nbsp;
+											<button jsf:id="bt_estatus" 
+											jsf:action="#{servicoFinalizadoBean.visualizar}" class="btn btn-info"											
+											data-toggle="tooltip" data-placement="top" title="Visualizar">
+											<i class="fa fa-user"></i>
+											<f:setPropertyActionListener target="#{servicoFinalizadoBean.servico}"
+												value="#{list}" />
+											</button>	
+									 </div>		
+									</h:column>
+									<f:facet name="footer">							           
+							             <h:commandButton value="Carregar mais dados" styleClass="btn btn-grey btn-block " action="#{servicoFinalizadoBean.carregarMais}" 
+							               rendered="#{servicoFinalizadoBean.listaServicoFechado.size() > 14}"/>    
+							        </f:facet>   
+								</h:dataTable>														
+                               </div>
+                              </div> 
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

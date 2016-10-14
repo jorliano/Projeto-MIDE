@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="br.com.jortec.mide.MainActivity"
+    android:background="@android:color/white"
+    android:id="@+id/rl_imagem">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/imagem_toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/imagem_recycler"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:layout_below="@+id/imagem_toolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="65dp"
+            android:clickable="true"
+            android:src="@android:drawable/ic_menu_camera"
+            app:backgroundTint="@color/primary"
+            app:borderWidth="0dp"
+            app:fabSize="normal" />
+    </FrameLayout>
+
+</RelativeLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll_container_esquerda"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:background="@android:color/holo_orange_light"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="0.01dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:background="@color/colorPrimaryLight">
+
+
+
+            <TextView
+                android:id="@+id/tv_chate_hora_esquerda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:maxLines="1"
+                android:textColor="@color/colorSecondText"
+                android:text="exemplo da data"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_chate_mensage_esquerda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_chate_hora_esquerda"
+                android:layout_below="@+id/tv_chate_hora_esquerda"
+                android:paddingTop="9dp"
+                android:textColor="@color/colorPrimarytext"
+                android:text="exemplo da menssage"
+                android:textIsSelectable="true"
+                android:textSize="16sp" />
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
+
+
+
+
+
+
+
