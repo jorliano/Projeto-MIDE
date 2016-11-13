@@ -4,7 +4,8 @@
 
 $(document).ready(function(){
 	  
-	           url = "http://localhost/WebServiceMIDE/chat/listarUsuario";   		          	          	        
+	           //url = "http://jortec.ddns.net/WebServiceMIDE/chat/listarUsuario";   	
+	           url = "http://jortec.ddns.net/WebServiceMIDE/chat/listarUsuario";   	
 		       $(function(){
 					carregarDados(url);
 				});
@@ -105,7 +106,7 @@ $(document).ready(function(){
 			   
 			   if(a.hasClass( "page-quick-sidebar-content-item-shown" ) && contador < 30 ){
 				   console.log("repetir a função");
-				   url = "http://localhost/WebServiceMIDE/chat/listarMais/";  
+				   url = "http://jortec.ddns.net/WebServiceMIDE/chat/listarMais/";  
 				   
 				   //alert("Função de tempo chamada");
 				    getListaMenssages(a,url);
@@ -154,7 +155,7 @@ var QuickSidebar=function(){
 				                console.log("chat chamado "+ $(this).find('.media-heading').html());		
 				                
 				                $( ".post" ).remove();				           	 
-				         	    url = "http://localhost/WebServiceMIDE/chat/listar/"+destinatario+"/sistema";   
+				         	    url = "http://jortec.ddns.net/WebServiceMIDE/chat/listar/"+destinatario+"/sistema";   
 				            	 
 				                getListaMenssages(a,url);			        	   				        	   
 				        	    a.addClass("page-quick-sidebar-content-item-shown")
@@ -189,7 +190,7 @@ var QuickSidebar=function(){
 
 				                    		       $.ajax({
 				                    		           type: "POST",
-				                    		           url: "http://localhost/WebServiceMIDE/chat/enviar_mobile",
+				                    		           url: "http://jortec.ddns.net/WebServiceMIDE/chat/enviar_mobile",
 				                    		           dataType: "text",
 				                    		           success: function (msg) {		                    		        	   				                    		        	   
 				                    		              

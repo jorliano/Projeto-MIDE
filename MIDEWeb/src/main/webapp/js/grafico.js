@@ -5,8 +5,9 @@
 	
 $(function () {
 	
+	      
 	    
-			$.getJSON("http://localhost/WebServiceMIDE/dados/graficoGeral", function(data) {
+			$.getJSON("http://jortec.ddns.net/WebServiceMIDE/dados/graficoGeral", function(data) {
 				   console.log(data);		
 				   
 				   var instalacao = new Array();  
@@ -36,6 +37,7 @@ $(function () {
 				   });
 				   console.log(qtdIn);
 				   console.log("iniciar grafico");	
+				  
 				   
 				   $('#grafico').highcharts( 		
 				    		
@@ -107,16 +109,16 @@ $(function () {
 	 });
 	      
 		
-	var url = "http://localhost/WebServiceMIDE/dados/graficoUsuario/dia";
+	var url = "http://jortec.ddns.net/WebServiceMIDE/dados/graficoUsuario/dia";
 	
 	$('select').on('change', function (e) {
 	    var optionSelected = $("option:selected", this);   	    
 	   
 	    if(this.value == 'Dia'){
-	    	url = "http://localhost/WebServiceMIDE/dados/graficoUsuario/dia";
+	    	url = "http://jortec.ddns.net/WebServiceMIDE/dados/graficoUsuario/dia";
 	    	graficoUsuario("Dia atual ");
 	    }else{
-	    	url = "http://localhost/WebServiceMIDE/dados/graficoUsuario/mes";
+	    	url = "http://jortec.ddns.net/WebServiceMIDE/dados/graficoUsuario/mes";
 	    	graficoUsuario("Mês atual  ");
 	    	
 	    }

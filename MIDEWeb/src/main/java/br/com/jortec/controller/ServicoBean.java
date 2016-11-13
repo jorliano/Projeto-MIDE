@@ -44,9 +44,9 @@ public class ServicoBean implements Serializable {
 	Servico servico = new Servico();
 	
 	//relatorio
-    private String dia = "1", mes = "1", ano = "2016";
+    private String dia = "1", mes = "2", ano = "2016";
     private List dias, meses, anos;
-    private String periodo;
+    private String periodo = "dia";
     private String referencia;
     private String linkRelatorio;
 	
@@ -305,7 +305,7 @@ public class ServicoBean implements Serializable {
 				alerta.error("Não foi possivel gerar o relatorio", false);
 			}else{
 				alerta.info("Relatorio gerado om sucesso , clik no butão imprirmir", false);
-				linkRelatorio = Constante.URL_DADOS+"printRelatorio";
+				linkRelatorio = Constante.URL_FONTE+"printRelatorio";				
 			}
 			
 		} catch (JSONException e) {

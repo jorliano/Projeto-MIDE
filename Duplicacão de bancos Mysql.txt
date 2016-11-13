@@ -1,0 +1,96 @@
+Replicação Master-Master no MySQL em Linux
+
+Preparando o ambiente
+
+O primeiro passo é sincronizar os bancos de dados, utilizados na replicação, entre os dois servidores do MySQL. Podemos usar o mysqldump nesta tarefa.
+
+No servidor A:
+# mysqldump -u root -p --databases servico_mide > servidorA-dump.sql
+
+No servidor B:
+# mysql -u root -p < servidorA-dump.sql
+
+Vamos assumir os seguintes endereços IPs para os servidores:
+
+Servidor A: 192.168.0.11
+Servidor B: 192.168.0.12
+
+Configurando Permissões de Usuário
+
+O processo de replicação do MySQL exige uma conexão ativa entre os dois servidores em ambos os lados. É preciso definir um usuário/senha para essa conexão.
+
+No servidor A:
+GRANT ALL PRIVILEGES ON *.* TO replicacao@192.168.0.12 IDENTIFIED BY 'repl123' WITH GRANT OPTION;
+
+No servidor B:
+GRANT ALL PRIVILEGES ON *.* TO replicacao@192.168.0.11 IDENTIFIED BY 'repl123' WITH GRANT OPTION;
+
+Perceba que setamos os pervilégios do usuário replicacao para todos os bancos de dados no MySQL. Porém você pode definir somente as bases que serão incluídas na replicação ao invés de incluir todas bases.
+
+Configurando o MySQL
+
+As configurações abaixo devem ser incluídas na seção [mysqld] do my.cnf
+
+Servidor A:
+
+server-id = 1
+auto-increment-increment = 2
+auto-increment-offset = 1
+
+log-bin
+binlog-do-db = servico_mide
+
+master-host = 192.168.0.11
+master-user = replicacao
+master-password = repl123
+master-port = 3306
+master-connect-retry = 60
+
+Servidor B:
+
+server-id = 2
+auto-increment-increment = 2
+auto-increment-offset = 2
+
+log-bin
+binlog-do-db = servico_mide
+
+master-host = 192.168.0.12
+master-user = replicacao
+master-password = repl123
+master-port = 3306
+master-connect-retry = 60
+
+A definição dos parâmetros auto-increment-increment e auto-increment-offset evitam colisão entre campos auto_increment. Mantenha o mesmo valor no campo auto-increment-increment para os dois servidores. O campo auto-increment-offset mantenha sequencialmente entre os servidores. No caso, 1 e 2.
+
+O campo server-id também deve ser único entre os dois servidores. No caso, 1 e 2.
+
+No exemplo de configuração acima estamos replicando somente o banco chamado base1. Caso precise replicar mais de uma base de dados, você pode inserir quantas linhas do parâmetro binlog-do-db forem necessárias:
+
+binlog-do-db = servico_mide
+binlog-do-db = base2
+binlog-do-db = base3
+...
+
+Caso você não especifique nenhum parâmetro binlog-do-db, todas as base de dados serão replicadas. Você tem também a opção de especificar o parâmetro binlog-ignore-db para ignorar quais base de dados não serão replicadas. É o processo inverso ao do parâmetro binlog-do-db:
+
+binlog-ignore-db = mysql
+binlog-ignore-db = information_schema
+
+Iniciando a replicação
+
+Reinicie o MySQL nos dois serviores:
+# /etc/init.d/mysql restart
+
+Neste momento a replicação deve ter iniciado. Se por algum motivo não tiver sido iniciado (Verificar erro no arquivo de log do mysql). Entre nos dois servidores e execute o comando:
+
+mysql> start slave
+
+Testando
+
+Entre no MySQL nos dois servidores e execute o comando:
+mysql> show slave statusG
+
+Verifique os parâmetros Slave_IO_Running e Slave_SQL_Running. Ambos devem estar com o valor “YES”. Caso não esteja, refaça o processo.
+
+Outro teste importante, é fazer alterações na base de um servidor e verificar se a mudança foi replicada para o outro servidor e vice-cversa.

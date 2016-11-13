@@ -10,6 +10,7 @@ public class Constante {
    public static final String URL_ADMINISTRADOR = dominio+"administrador/";
    public static final String URL_ORDEM_SERVICO = dominio+"ordemservico/";
    public static final String URL_DADOS =         dominio+"dados/";
+   public static final String URL_FONTE =         "http:jortec.ddns.net/WebServiceMIDE/dados/";
 	
    
    public static final String SERVER_SUCESSO = "sucesso";
