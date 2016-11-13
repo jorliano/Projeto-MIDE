@@ -26,8 +26,8 @@ import java.util.ArrayList;
 public class HttpConnection {
 
     //public static final String URL = "http://192.168.0.50:8090/WebServiceMIDE/mobile/";
-    public static final String URL = "http://192.168.0.10/WebServiceMIDE/mobile/";
-    public static final String URL_CHAT = "http://192.168.0.10/WebServiceMIDE/chat/";
+    public static final String URL = "http://jortec.ddns.net/WebServiceMIDE/mobile/";
+    public static final String URL_CHAT = "http://jortec.ddns.net/WebServiceMIDE/chat/";
     public static final String RESPOSTA_SUCESSO = "sucesso";
     public static final String RESPOSTA_FALHOU = "falhou";
     public static final String ATUALIZACAO = "br.com.jortec.mide.internet.ATUALIZACAO";
