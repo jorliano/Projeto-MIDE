@@ -1,2 +1,2 @@
 # Projeto-MIDE
-Sistema para gerenciamento de notas de serviços, com integração das plataformas web e mobile.
+Sistema para gerenciamento de orden de serviços, com integração das plataformas web e mobile.
